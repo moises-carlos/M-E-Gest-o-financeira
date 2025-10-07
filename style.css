@@ -150,3 +150,115 @@ body{
   font-weight: 600;
   font-style: normal;
 }
+
+/* Pricing Table Styles - V4 (Unified Background) */
+#pricing .table {
+    background-color: var(--cor-fundo-pagina); /* Base BG for the whole table */
+    border: 1px solid var(--cor-fundo-pagina); /* Matching border to contain it */
+    border-radius: .5rem;
+    overflow: hidden;
+}
+
+#pricing .table thead th {
+    background-color: transparent; /* Header is now part of the table body color */
+    border-bottom: 2px solid var(--cor-destaque-principal);
+    color: var(--cor-texto-principal);
+}
+
+#pricing .table th,
+#pricing .table td {
+    border-color: var(--cor-fundo-secao); /* Use the darkest color for borders */
+    padding: 1rem 0.75rem;
+    vertical-align: middle;
+    background-color: transparent; /* Ensure cells are transparent to show table bg */
+}
+
+#pricing .table tbody th {
+    color: var(--cor-texto-principal);
+    font-weight: 500;
+}
+
+#pricing .table .highlight-plan {
+    /* Apply a subtle gradient overlay to make it pop */
+    background-image: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.05));
+}
+
+#pricing thead .highlight-plan {
+    border-top: 3px solid var(--cor-destaque-accent);
+    border-bottom-width: 3px;
+    background-image: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.05));
+}
+
+#pricing .table-striped tbody tr:nth-of-type(odd):not(.table-dark) {
+    background-color: rgba(0, 0, 0, 0.1); /* This will overlay on the main table bg */
+}
+
+#pricing .table tfoot {
+    border-top: 2px solid var(--cor-destaque-principal);
+}
+
+#pricing .table tfoot td, #pricing .table tfoot th {
+  border: none;
+  padding-top: 1.5rem;
+}
+
+#pricing .table .bi {
+  font-size: 1.3rem;
+  vertical-align: middle;
+}
+
+/* Comparison Table */
+#comparison {
+    background-color: var(--cor-fundo-secao);
+}
+
+.comparison-table {
+    background-color: #04065A;
+    border-radius: .75rem;
+    overflow: hidden;
+    border: 1px solid var(--cor-destaque-principal);
+}
+
+.comparison-table thead {
+    background-color: #01022E;
+}
+
+.comparison-table th {
+    padding: 1.5rem 1rem;
+    font-weight: bold;
+    border: none;
+}
+
+.comparison-table td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-top: 1px solid #0c0f7a;
+
+}
+
+.comparison-table tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.comparison-table .popular-plan-header {
+    background-color: var(--cor-destaque-accent);
+    color: #000;
+}
+
+.comparison-table .bi {
+    font-size: 1.5rem;
+}
+
+.comparison-table tfoot td {
+    padding-top: 2rem;
+    border: none;
+}
+/* WhatsApp Button Hover Effect */
+#orcamento .btn-success {
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+#orcamento .btn-success:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
