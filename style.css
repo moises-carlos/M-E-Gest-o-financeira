@@ -113,6 +113,10 @@ body{
     transition: transform 0.3s;
 }
 
+#pricing .card .card-body {
+    justify-content: center;
+}
+
 #pricing .card:hover {
     transform: translateY(-10px);
 }
