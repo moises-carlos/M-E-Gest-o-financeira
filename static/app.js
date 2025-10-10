@@ -21,8 +21,8 @@ document.getElementById('whatsapp-form').addEventListener('submit', function(eve
   submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...';
   submitButton.disabled = true;
 
-  // Send data to the backend
-  fetch('http://127.0.0.1:8000/api/contact', {
+  // Send data to the backend using a relative path
+  fetch('/api/contact', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
