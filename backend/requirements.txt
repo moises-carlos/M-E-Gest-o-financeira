@@ -1,5 +1,5 @@
 fastapi
 uvicorn
-sqlalchemy
 python-multipart
-psycopg2-binary
+gspread
+google-auth-oauthlib
