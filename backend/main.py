@@ -6,10 +6,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from typing import List
+import os
 
 # --- Database Configuration ---
-DATABASE_URL = "sqlite:///./contacts.db"
-engine = sqlalchemy.create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+# The database URL is read from the DATABASE_URL environment variable set in Render.
+DATABASE_URL = os.environ.get("DATABASE_URL")
+
+engine = sqlalchemy.create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
