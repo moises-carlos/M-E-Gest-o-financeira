@@ -1,13 +1,12 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 import os
 
 # --- Pydantic Schema ---
-# Defines the expected data structure for a request.
 class ContactSchema(BaseModel):
     nome: str
     email: str
@@ -20,11 +19,9 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive.file",
 ]
 
-# The secret file is read from the path where we saved it in Render
-SERVICE_ACCOUNT_FILE = 'google_credentials.json'
-SHEET_NAME = "megestao"
+SERVICE_ACCOUNT_FILE = '../google_credentials.json'
+SHEET_URL = "https://docs.google.com/spreadsheets/d/1etHPBytBN5KHX8WOQHb4TIVJWpVG7Tp7DVrpp8MKryI/edit?pli=1&gid=0#gid=0"
 
-# Authenticate and get the gspread client
 creds = None
 if os.path.exists(SERVICE_ACCOUNT_FILE):
     creds = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
@@ -45,17 +42,13 @@ app.add_middleware(
 # --- API Endpoints ---
 @app.post("/api/contact", response_model=ContactSchema)
 def create_contact_request(contact: ContactSchema):
-    """
-    Receives contact form data and appends it to a Google Sheet.
-    """
     if not creds:
-        return {"error": "Google credentials not found. Check Secret File configuration."}
+        raise HTTPException(status_code=500, detail="Google credentials not found. Check Secret File configuration.")
     try:
-        # Open the spreadsheet and select the first worksheet
-        sheet = client.open(SHEET_NAME).sheet1
+        # Open the spreadsheet by URL and select the first worksheet
+        sheet = client.open_by_url(SHEET_URL).sheet1
 
-        # Prepare the row data in the correct order
-        # Assumes columns are: Nome, Email, Telefone, Empresa
+        # Prepare the row data
         row = [contact.nome, contact.email, contact.telefone, contact.empresa]
         
         # Append the new row
@@ -63,10 +56,9 @@ def create_contact_request(contact: ContactSchema):
         
         return contact
     except gspread.exceptions.SpreadsheetNotFound:
-        return {"error": f"Spreadsheet named '{SHEET_NAME}' not found. Check the name and sharing settings."}
+        raise HTTPException(status_code=404, detail="Spreadsheet not found. Check the URL and sharing settings.")
     except Exception as e:
-        return {"error": f"An unexpected error occurred: {e}"}
+        raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {e}")
 
 # --- Static Files Mount ---
-# This must be the LAST route defined
 app.mount("/", StaticFiles(directory="../static", html=True), name="static")
