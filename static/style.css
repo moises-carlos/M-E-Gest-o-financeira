@@ -1,0 +1,347 @@
+:root {
+  --cor-fundo-pagina: #FFFFFF;
+  --cor-fundo-secao: #f8f9fa;      /* Cinza bem claro */
+  --cor-destaque-principal: #c75b30; /* Laranja */
+  --cor-destaque-accent: #c28d2d;    /* Amarelo */
+  --cor-texto-principal: #212529;    /* Cinza Escuro */
+  --cor-texto-secundario: #6c757d;   /* Cinza Médio */
+  --cor-bordas: #c1c1c1;             /* Cinza da paleta */
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+header {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  color: var(--cor-texto-principal);
+  background: linear-gradient(45deg, var(--cor-destaque-principal), var(--cor-destaque-accent), var(--cor-fundo-secao));
+  background-size: 200% 200%;
+  animation: gradient-animation 15s ease infinite;
+}
+
+body{
+    background-color: var(--cor-fundo-pagina);
+    color: var(--cor-texto-secundario);
+}
+
+/* ACCENT BUTTON */
+.btn-accent {
+    background-color: var(--cor-destaque-accent);
+    border-color: var(--cor-destaque-accent);
+    color: #000;
+    font-weight: bold;
+}
+.btn-accent:hover {
+    background-color: var(--cor-destaque-accent);
+    border-color: var(--cor-destaque-accent);
+    color: #000;
+    opacity: 0.9;
+}
+
+
+/* BOOTSTRAP OVERRIDES */
+.btn-primary {
+    background-color: var(--cor-destaque-principal);
+    border-color: var(--cor-destaque-principal);
+    color: #FFFFFF; /* Texto do botão principal branco */
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    background-color: var(--cor-destaque-principal);
+    border-color: var(--cor-destaque-principal);
+    color: #FFFFFF;
+}
+
+.btn-light {
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+    color: #000;
+}
+
+.btn-outline-primary {
+  color: var(--cor-destaque-principal);
+  border-color: var(--cor-destaque-principal);
+}
+
+.btn-outline-primary:hover {
+  color: #FFFFFF;
+  background-color: var(--cor-destaque-principal);
+  border-color: var(--cor-destaque-principal);
+}
+
+.text-primary {
+  color: var(--cor-destaque-principal) !important;
+}
+
+.border-primary {
+  border-color: var(--cor-destaque-principal) !important;
+}
+
+.bg-primary {
+  background-color: var(--cor-destaque-principal) !important;
+  color: #FFFFFF !important;
+}
+
+.header-image {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+
+}
+
+.section-divider {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--cor-destaque-principal), rgba(0, 0, 0, 0));
+  margin: 0;
+}
+
+#features .card {
+    background-color: var(--cor-fundo-pagina);
+    color: var(--cor-texto-principal);
+    border: 1px solid var(--cor-bordas);
+}
+
+#pricing.bg-light {
+  background-color: var(--cor-fundo-secao) !important;
+  color: var(--cor-texto-principal);
+}
+
+#pricing .card {
+    background-color: var(--cor-fundo-pagina);
+    color: var(--cor-texto-principal);
+    border: 1px solid var(--cor-bordas);
+    transition: transform 0.3s;
+}
+
+#pricing .card .card-body {
+    justify-content: center;
+}
+
+#pricing .card:hover {
+    transform: translateY(-10px);
+}
+
+#pricing .card-header {
+  background-color: transparent;
+  border-bottom: 1px solid var(--cor-bordas);
+}
+
+#pricing .border-primary .card-header {
+  background-color: var(--cor-destaque-principal);
+  color: #FFFFFF;
+  border-bottom: 1px solid var(--cor-destaque-principal);
+}
+
+/* About Section Styles */
+#about {
+  background-color: var(--cor-fundo-secao);
+}
+
+#about .blockquote {
+  border-left: 4px solid var(--cor-destaque-principal);
+  padding-left: 1.5rem;
+  text-align: left;
+  font-style: italic;
+}
+
+#about .mission-statement {
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+#about .highlight {
+  color: var(--cor-destaque-principal);
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Pricing Table Styles - V4 (Unified Background) */
+#pricing .table {
+    background-color: var(--cor-fundo-pagina);
+    border: 1px solid var(--cor-bordas);
+    border-radius: .5rem;
+    overflow: hidden;
+}
+
+#pricing .table thead th {
+    background-color: transparent;
+    border-bottom: 2px solid var(--cor-destaque-principal);
+    color: var(--cor-texto-principal);
+}
+
+#pricing .table th,
+#pricing .table td {
+    border-color: var(--cor-bordas);
+    padding: 1rem 0.75rem;
+    vertical-align: middle;
+    background-color: transparent;
+}
+
+#pricing .table tbody th {
+    color: var(--cor-texto-principal);
+    font-weight: 500;
+}
+
+#pricing .table .highlight-plan {
+    background-color: var(--cor-fundo-secao);
+}
+
+#pricing thead .highlight-plan {
+    border-top: 3px solid var(--cor-destaque-accent);
+    border-bottom-width: 3px;
+}
+
+#pricing .table-striped tbody tr:nth-of-type(odd):not(.table-dark) {
+    background-color: var(--cor-fundo-secao);
+}
+
+#pricing .table tfoot {
+    border-top: 2px solid var(--cor-destaque-principal);
+}
+
+#pricing .table tfoot td, #pricing .table tfoot th {
+  border: none;
+  padding-top: 1.5rem;
+}
+
+#pricing .table .bi {
+  font-size: 1.3rem;
+  vertical-align: middle;
+}
+
+/* Comparison Table */
+#comparison {
+    background-color: var(--cor-fundo-secao);
+}
+
+.comparison-table {
+    background-color: var(--cor-fundo-pagina);
+    border-radius: .75rem;
+    overflow: hidden;
+    border: 1px solid var(--cor-bordas);
+}
+
+.comparison-table thead {
+    background-color: var(--cor-fundo-secao);
+}
+
+.comparison-table th {
+    padding: 1.5rem 1rem;
+    font-weight: bold;
+    border: none;
+}
+
+.comparison-table td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-top: 1px solid var(--cor-bordas);
+
+}
+
+.comparison-table tbody tr:nth-of-type(odd) {
+    background-color: var(--cor-fundo-secao);
+}
+
+.comparison-table .popular-plan-header {
+    background-color: var(--cor-destaque-accent);
+    color: #000;
+}
+
+.comparison-table .bi {
+    font-size: 1.5rem;
+}
+
+.comparison-table tfoot td {
+    padding-top: 2rem;
+    border: none;
+}
+/* WhatsApp Button Hover Effect */
+#orcamento .btn-success {
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+#orcamento .btn-success:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Contact Form Section */
+#contact-form {
+  background-color: var(--cor-fundo-secao);
+}
+
+#contact-form .input-group-text {
+  background-color: var(--cor-destaque-principal);
+  border-color: var(--cor-destaque-principal);
+  color: #FFFFFF;
+}
+
+#contact-form .form-control {
+  background-color: var(--cor-fundo-pagina);
+  border: 1px solid var(--cor-bordas);
+  color: var(--cor-texto-principal);
+}
+
+#contact-form .form-control::placeholder {
+  color: var(--cor-texto-secundario);
+  opacity: 0.7;
+}
+
+#contact-form .form-control:focus {
+  background-color: var(--cor-fundo-pagina);
+  border-color: var(--cor-destaque-accent);
+  color: var(--cor-texto-principal);
+  box-shadow: 0 0 0 0.25rem rgba(194, 141, 45, 0.25);
+}
+
+#contact-form .btn-success {
+    background-color: var(--cor-destaque-accent);
+    border-color: var(--cor-destaque-accent);
+    color: #000;
+    font-weight: bold;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+#contact-form .btn-success:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+/* Animations */
+@keyframes gradient-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header h1,
+header p,
+header .header-image {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0; /* Start hidden */
+}
+
+header p {
+  animation-delay: 0.2s;
+}
+
+header .header-image {
+  animation-delay: 0.4s;
+}
