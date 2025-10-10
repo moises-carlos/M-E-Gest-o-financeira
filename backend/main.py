@@ -6,22 +6,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 import os
 
-# --- DEBUGGING CODE ---
-print("--- DEBUGGING FILE PATHS ---")
-print(f"Current Working Directory: {os.getcwd()}")
-print("\n--- Files in Project Root (`../`) ---")
-try:
-    print(os.listdir('../'))
-except Exception as e:
-    print(e)
-print("\n--- Files in Backend Root (`./`) ---")
-try:
-    print(os.listdir('.'))
-except Exception as e:
-    print(e)
-print("--- END DEBUGGING ---")
-# --- END DEBUGGING CODE ---
-
 # --- Pydantic Schema ---
 class ContactSchema(BaseModel):
     nome: str
@@ -35,7 +19,7 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive.file",
 ]
 
-SERVICE_ACCOUNT_FILE = '../google_credentials.json'
+SERVICE_ACCOUNT_FILE = 'google_credentials.json'
 SHEET_URL = "https://docs.google.com/spreadsheets/d/1etHPBytBN5KHX8WOQHb4TIVJWpVG7Tp7DVrpp8MKryI/edit?pli=1&gid=0#gid=0"
 
 creds = None
@@ -59,7 +43,7 @@ app.add_middleware(
 @app.post("/api/contact", response_model=ContactSchema)
 def create_contact_request(contact: ContactSchema):
     if not creds:
-        raise HTTPException(status_code=500, detail="Google credentials not found. Check Secret File configuration.")
+        raise HTTPException(status_code=500, detail="Google credentials not found. Check Secret File configuration in Render.")
     try:
         # Open the spreadsheet by URL and select the first worksheet
         sheet = client.open_by_url(SHEET_URL).sheet1
