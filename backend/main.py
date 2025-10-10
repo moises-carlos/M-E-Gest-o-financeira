@@ -6,6 +6,22 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 import os
 
+# --- DEBUGGING CODE ---
+print("--- DEBUGGING FILE PATHS ---")
+print(f"Current Working Directory: {os.getcwd()}")
+print("\n--- Files in Project Root (`../`) ---")
+try:
+    print(os.listdir('../'))
+except Exception as e:
+    print(e)
+print("\n--- Files in Backend Root (`./`) ---")
+try:
+    print(os.listdir('.'))
+except Exception as e:
+    print(e)
+print("--- END DEBUGGING ---")
+# --- END DEBUGGING CODE ---
+
 # --- Pydantic Schema ---
 class ContactSchema(BaseModel):
     nome: str
