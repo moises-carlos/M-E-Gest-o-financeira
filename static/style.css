@@ -1,11 +1,20 @@
 :root {
-  --cor-fundo-pagina: #FFFFFF;
-  --cor-fundo-secao: #f8f9fa;      /* Cinza bem claro */
-  --cor-destaque-principal: #c75b30; /* Laranja */
-  --cor-destaque-accent: #c28d2d;    /* Amarelo */
-  --cor-texto-principal: #212529;    /* Cinza Escuro */
+  --cor-principal: #001f8b;          /* Azul Corporativo */
+  --cor-principal-escuro: #001663;    /* Azul Escuro */
+  --cor-destaque: #5cff4d;           /* Verde Crescimento */
+  --cor-alerta: #e16b2f;             /* Laranja Alerta */
+  --cor-fundo-claro: #f5f5f5;        /* Cinza Claro */
+  --cor-texto-claro: #ffffff;         /* Branco Puro */
+  --cor-texto-escuro: #212529;       /* Cinza Escuro (padrão) */
+
+  /* --- Mapeamento para o tema existente --- */
+  --cor-fundo-pagina: var(--cor-texto-claro);
+  --cor-fundo-secao: var(--cor-fundo-claro);
+  --cor-destaque-principal: var(--cor-principal);
+  --cor-destaque-accent: var(--cor-destaque);
+  --cor-texto-principal: var(--cor-texto-escuro);
   --cor-texto-secundario: #6c757d;   /* Cinza Médio */
-  --cor-bordas: #c1c1c1;             /* Cinza da paleta */
+  --cor-bordas: #dee2e6;             /* Cinza Bootstrap para consistência */
 }
 
 *{
@@ -17,10 +26,8 @@ header {
   min-height: 80vh;
   display: flex;
   align-items: center;
-  color: var(--cor-texto-principal);
-  background: linear-gradient(45deg, var(--cor-destaque-principal), var(--cor-destaque-accent), var(--cor-fundo-secao));
-  background-size: 200% 200%;
-  animation: gradient-animation 15s ease infinite;
+  color: var(--cor-texto-claro);
+  background-color: var(--cor-principal);
 }
 
 body{
@@ -344,4 +351,13 @@ header p {
 
 header .header-image {
   animation-delay: 0.4s;
+}
+
+/* Text Justification */
+#about p,
+#features .card-text,
+#orcamento .lead,
+#orcamento .step-text,
+header .lead {
+  text-align: justify;
 }
